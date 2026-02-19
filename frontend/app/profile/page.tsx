@@ -16,6 +16,8 @@ const Profile = () => {
     }, [router, isLoggedIn, authLoading])
     const {banner} = useAvatar()
 
+    if(!isLoggedIn) return null
+
     return (
     <>
         <Navbar isloggedin={isLoggedIn}/>
