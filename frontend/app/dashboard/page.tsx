@@ -7,6 +7,7 @@ import User from '../components/User/User'
 import Watching from '../components/Watching/Watching'
 import useAvatar from '../hooks/useAvatar'
 import Image from 'next/image'
+import DashboardLayout from '../components/Dashboard/DashboardLayout'
 const Profile = () => {
 
     const router = useRouter()
@@ -21,8 +22,7 @@ const Profile = () => {
     return (
     <>
         {authLoading ? <div className='flex justify-center items-center font-bold pt-[75px] h-screen text-[42px]'>Loading...</div> : <>
-            <div className=''>
-            </div>
+            <DashboardLayout />
         </>
         }
     </>

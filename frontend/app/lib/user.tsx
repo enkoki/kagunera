@@ -44,3 +44,20 @@ export async function updateAdminRole(token: string, identifier: string | number
     return { success: false, message: "Network error" };
   }
 }
+
+export async function fetchUsers(token: string) {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users`, {
+      method: "GET",
+      headers: { 
+        "Authorization": `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
+    });
+
+    const data = await res.json();
+    return res.ok ? { success: true, data } : { success: false, message: data.detail };
+  } catch (err) {
+    return { success: false, message: "Network error" };
+  }
+}
