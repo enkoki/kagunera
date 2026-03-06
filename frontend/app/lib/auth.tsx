@@ -25,7 +25,7 @@ export async function loginHandling(username: string, password: string) {
 
 export async function verify_session(token: string){
 	try{
-		const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users`, 
+		const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user`, 
 			{
 				headers: { Authorization: `Bearer ${token}` }
 			}

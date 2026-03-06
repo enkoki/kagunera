@@ -30,7 +30,7 @@ const Navbar = ({isloggedin = false}) => {
                 {isOpen ? null : <Hamburger width = {32} height ={32} className='xl:hidden cursor-pointer relative right-0' onClick = {() => setIsOpen(true)}/>}
             </header>
            {isOpen && <Sidebar setIsOpen={setIsOpen} isOpen={isOpen} />}
-
+                       
         </>
     );
 }

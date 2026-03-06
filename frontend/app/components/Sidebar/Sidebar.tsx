@@ -21,7 +21,7 @@ interface SidebarProps {
 
 const Sidebar = ({ setIsOpen, isOpen }: SidebarProps) => {
     const { avatar } = useAvatar()
-    const {username, uuid, isLoggedIn, authLoading} = useAuth()
+    const {username, uuid, isLoggedIn, authLoading, role_id} = useAuth()
     const pathName = usePathname()
 
     if (authLoading) return <div className="flex justify-center items-center h-full w-full">Loading user...</div>
@@ -40,10 +40,11 @@ const Sidebar = ({ setIsOpen, isOpen }: SidebarProps) => {
                 <div className='flex justify-center items-start flex-col'>
                     <div className='font-black text-[20px]'>{username}</div>
                     <div className='text-[#9F9FA3] font-bold text-[12px]'>UUID: {uuid}</div>
-                    <div className='cursor-pointer text-[#6200ED] font-bold'>
+                    <div className='cursor-pointer text-[#6200ED] font-bold flex flex-col justify-center items-center w-max h-max gap-2'>
                         <Link href="/profile">View Profile</Link>
                     </div>
-                </div>
+                </div >
+                {role_id <= 1 ? <Link href="/dashboard" className='border-3 border-gray-400 px-3 py-2 rounded-2xl'>Admin</Link> : null}
                 </div>
             </div>
             <SBItems />

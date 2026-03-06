@@ -27,3 +27,12 @@ class UserResponse(BaseModel):
     user: UserOut
     created_at: datetime
     updated_at: datetime
+
+class AllUserOut(BaseModel):
+    id: int
+    email: EmailStr
+    username: str
+    role_id: int
+    created_at: datetime
+
+    model_config = ConfigDict(from_attributes=True)
