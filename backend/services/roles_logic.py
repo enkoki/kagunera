@@ -3,29 +3,29 @@ from sqlalchemy.orm import Session
 from models.role import Role
 from models.user import Users
 
-def update_role(new_role_id: int, id: int, current_user_id: int, db: Session):
-    if new_role_id == 0:
-        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Only one superadmin can exists")    
+from sqlalchemy import or_
 
-    user = db.query(Users).filter(Users.id == id).first()
-    current_user = db.query(Users).filter(Users.id == current_user_id).first()
+def update_role(new_role_id: int, identifier: str | int, current_user_uuid: str, db: Session):
+    if new_role_id == 0:
+        raise HTTPException(status_code=403, detail="Only one superadmin can exist")    
+
+    current_user = db.query(Users).filter(Users.uuid == current_user_uuid).first()
+    if not current_user or current_user.role_id != 0:
+        raise HTTPException(status_code=401, detail="Permission denied: SuperAdmin only.")
+
+    query = db.query(Users)
+    if isinstance(identifier, int) or (isinstance(identifier, str) and identifier.isdigit()):
+        user = query.filter(or_(Users.id == int(identifier), Users.username == str(identifier))).first()
+    else:
+        user = query.filter(Users.username == identifier).first()
 
     if not user:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"User with ID:{id} not found")
-    if not current_user:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Current user not be found")
+        raise HTTPException(status_code=404, detail="Target user not found")
     
-    if current_user.role_id !=0:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="You cannot update roles.")
-    
-    new_role = db.query(Role).filter(Role.id == new_role_id).first()
-    if not new_role:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Role not be found")
-
     user.role_id = new_role_id
     db.commit()
     db.refresh(user)
-    return {"message":"user has been updated", "user":user}
+    return {"message": f"User {user.username} updated to role {new_role_id}", "user": user}
 
 
 def create_initial_roles(db: Session):
