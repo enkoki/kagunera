@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import MobileHeader from "./MobileHeader"
 import ProfileSection from "./ProfileSection"
 import SidebarItem from "./SidebarItem"
@@ -17,6 +17,18 @@ interface SidebarProps {
 const MainDashboardSidebar: React.FC<SidebarProps> = ({ active, setActive }) => {
     const [isOpen, setIsOpen] = useState(false)
 
+    useEffect(() => {
+    if (isOpen) {
+        document.body.style.overflow = "hidden"
+    } else {
+        document.body.style.overflow = "auto"
+    }
+
+    return () => {
+        document.body.style.overflow = "auto"
+    }
+}, [isOpen])
+
     return (
         <>
             <MobileHeader onOpen={() => setIsOpen(true)} />
@@ -27,12 +39,12 @@ const MainDashboardSidebar: React.FC<SidebarProps> = ({ active, setActive }) => 
                 ${isOpen ? "translate-x-0" : "-translate-x-full"}
                 flex flex-col
             `}>
-                <div className="flex justify-between lg:justify-start items-center mb-10">
+                <div className="flex justify-between lg:justify-start items-center mb-3 md:mb-5 lg:mb-10">
                     <Image src={siteLogo} alt="anisync-logo" className='w-10 h-10 xl:w-11 xl:h-11'/>
                     <span className="ml-4 text-2xl font-bold text-[#6200ED] tracking-tight hidden lg:flex">Anisync</span>
                     <div className="lg:hidden flex justify-end mb-4">
                         <button onClick={() => setIsOpen(false)} className="text-white p-2 hover:bg-neutral-800 rounded-lg">
-                            <Cross />
+                            <Cross width = {32} height ={32} />
                         </button>
                      </div>
                 </div>
