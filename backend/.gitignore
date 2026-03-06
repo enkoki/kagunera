@@ -3,3 +3,6 @@
 *.env
 
 __pycache__/
+
+# alembic.ini contains DB credentials, ignore it if you put secrets there
+alembic.ini

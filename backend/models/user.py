@@ -1,8 +1,14 @@
 import uuid
 from sqlalchemy import Column, Integer, String, TIMESTAMP, text, ForeignKey
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.dialects.postgresql import UUID, ENUM
 from sqlalchemy.orm import relationship
 from db import Base
+import enum
+
+class UserStatus(enum.Enum):
+    Active = "Active"
+    Banned = "Banned"
+    Pending = "Pending"
 
 class Users(Base):
     __tablename__ = "users"
@@ -12,6 +18,13 @@ class Users(Base):
     username = Column(String, nullable=False, unique=True, index=True)
     email = Column(String, nullable=False, unique=True, index=True)
     password = Column(String, nullable=False)
+
+    status = Column(
+        ENUM(UserStatus, name="user_status"), 
+        nullable=False, 
+        server_default=UserStatus.Active.value
+    )
+
     role_id = Column(Integer, ForeignKey("roles.id"), nullable=False, server_default="2")
     created_at = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text("NOW()"))
     updated_at = Column(

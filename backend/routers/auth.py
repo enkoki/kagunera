@@ -1,14 +1,15 @@
 from fastapi import APIRouter, Depends
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
-
+from typing import List
 from db import get_db
-from schemas.user_schemas import UserCreate, UserLogin, UserOut
+from schemas.user_schemas import UserCreate, UserLogin, UserOut, AllUserOut
 from services.auth import register_user, login_user, get_current_user
 from services.roles_logic import create_initial_roles
 from services.create_superadmin import create_super_admin
+from services.users import get_users
 
-public_router = APIRouter(prefix = "/auth", tags=["Users"])
+public_router = APIRouter(prefix = "/auth", tags=["Authentication"])
 router = APIRouter(tags=["Users"], dependencies=[Depends(get_current_user)])
 
 @public_router.post("/register", response_model=UserOut)
@@ -27,6 +28,10 @@ def initialize_roles(db: Session = Depends(get_db)):
 def initialize_superadmin(db: Session = Depends(get_db)):
     return create_super_admin(db)
 
-@router.get("/users", response_model=UserOut)
+@router.get("/user", response_model=UserOut)
 def get_user(current_user: UserOut = Depends(get_current_user)):
     return current_user
+
+@router.get("/users", response_model=List[AllUserOut])
+def get_all_users(current_user = Depends(get_current_user), db: Session = Depends(get_db)):
+    return get_users(current_user, db)

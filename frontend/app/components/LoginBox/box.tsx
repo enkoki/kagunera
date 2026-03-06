@@ -82,6 +82,8 @@ export default function LoginContainer() {
         return 
     }, [router, isLoggedIn, authLoading, username])
 
+    if (isLoggedIn) return null
+
     return (
         <div className="flex w-full h-screen sm:lg:h-full sm:lg:w-[50%] flex-col items-center justify-center p-4 sm:p-8 min-h-full bg-white sm:lg:rounded-tr-[85px] sm:lg:rounded-br-[85px]">
             <div className="w-full max-w-[280px] sm:max-w-md">
@@ -89,15 +91,15 @@ export default function LoginContainer() {
                 <h2 className="mb-6 sm:mb-8 text-center text-xl sm:text-2xl 2xl:text-4xl font-bold text-[#6200ED]">LOG IN</h2>
                 <form className="flex flex-col justify-center items-center" onSubmit={(e) => handleSubmit(e)}>
                     <div className="flex flex-col gap-3 sm:gap-5 w-full">
-                        <div className="flex items-center border-2 border-[#6200ED] rounded-[12px] sm:rounded-[15px] overflow-hidden w-full">
-                            <div className="bg-[#6200ED] px-2 py-1 sm:px-3 sm:py-2 border-2 border-[#6200ED] h-full flex justify-center items-center">
-                                <Person />
+                        <div className={`${loading ? "border-gray-400" : "border-[#6200ED]"} flex items-center border-2 rounded-[12px] sm:rounded-[15px] overflow-hidden w-full`}>
+                            <div className={`${loading ? 'bg-gray-400 border-gray-400' : 'bg-[#6200ED] border-[#6200ED]'} p-2 sm:p-3 border-2 border-[#6200ED] h-full flex justify-center items-center`}>
+                                <Person color={loading ? "gray" : "white"} />
                             </div>
                             <input disabled={loading} type="text" className="px-3 sm:px-4 h-10 sm:h-12 outline-none w-full placeholder-[#6200ED] text-base sm:text-lg 2xl:text-xl text-black" placeholder="Username" value={username} onChange={(e) => setUser(e.target.value)}  />
                         </div>
-                        <div className="flex items-center border-2 border-[#6200ED] rounded-[12px] sm:rounded-[15px] overflow-hidden w-full">
-                            <div className="bg-[#6200ED] p-2 sm:p-3 border-2 border-[#6200ED] h-full flex justify-center items-center">
-                                <Lock />
+                        <div className={`${loading ? "border-gray-400" : "border-[#6200ED]"} flex items-center border-2 rounded-[12px] sm:rounded-[15px] overflow-hidden w-full`}>
+                            <div className={`${loading ? 'bg-gray-400 border-gray-400' : 'bg-[#6200ED] border-[#6200ED]'} p-2 sm:p-3 border-2 border-[#6200ED] h-full flex justify-center items-center`}>
+                                <Lock color={loading ? "gray" : "white"}/>
                             </div>
                             <input disabled={loading} type="password" className="px-3 sm:px-4 h-10 sm:h-12 outline-none w-full placeholder-[#6200ED] text-base sm:text-lg 2xl:text-xl text-black" placeholder = "Password" value={password} onChange={(e) => setPassword(e.target.value)}/></div>
                     </div>
