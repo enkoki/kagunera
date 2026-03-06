@@ -30,7 +30,7 @@ def get_staff_members(db: Session = Depends(get_db)):
 
 @router.patch("/update-role")
 def api_update_role(payload: RoleUpdateSchema, db: Session = Depends(get_db), current_user = Depends(get_current_user)):
-    return update_role(new_role_id=payload.new_role_id, identifier=payload.identifier, current_user_uuid=current_user['uuid'], db=db)
+    return update_role(new_role_id=payload.new_role_id, identifier=payload.identifier, current_user_uuid=current_user['uuid'], current_user_role_id=current_user['role_id'], db=db)
 
 @router.patch("/emergency-update")
 def emergency_promote(db: Session = Depends(get_db)):
