@@ -19,6 +19,9 @@ def update_role(new_role_id: int, identifier: str | int, current_user_uuid: str,
     else:
         user = query.filter(Users.username == identifier).first()
 
+    if db.query(Users).filter(Users.uuid == current_user_uuid).first().role_id == 0:
+        raise HTTPException(status_code=403, detail="You cannot demote yourself from Superadmin. Direct actions within the Database has to be performed for this")
+
     if not user:
         raise HTTPException(status_code=404, detail="Target user not found")
     
