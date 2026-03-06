@@ -31,6 +31,7 @@ class UserResponse(BaseModel):
 
 class AllUserOut(BaseModel):
     id: int
+    uuid: UUID
     email: EmailStr
     username: str
     role_id: int

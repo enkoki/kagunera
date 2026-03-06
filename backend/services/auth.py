@@ -70,6 +70,7 @@ def verify_token(token: str) -> TokenResponse:
 
 def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)):
     token_data = verify_token(token)
+    print(f"DEBUG: Token data retrieved: {token_data}")
     user = db.query(Users).filter(Users.username==token_data.username).first()
     if user is None:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,detail="User does not exist",headers={"WWW-Authenticate":"Bearer"})
