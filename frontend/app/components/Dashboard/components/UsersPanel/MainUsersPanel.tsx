@@ -97,14 +97,9 @@ const MainUsersPanel: React.FC = () => {
         <div className="text-white p-4">
             <header className="mb-8 flex flex-col sm:flex-row justify-between items-center gap-4">
                 <div>
-                    <h1 className="text-2xl font-bold">
-                        User Management
-                    </h1>
-                    <p className="text-neutral-400 text-sm">
-                        View and manage your community members.
-                    </p>
+                    <h1 className="text-2xl font-bold">User Management</h1>
+                    <p className="text-neutral-400 text-sm">View and manage your community members.</p>
                 </div>
-
                 <input
                     placeholder="Search users..."
                     value={searchTerm}
@@ -121,30 +116,16 @@ const MainUsersPanel: React.FC = () => {
                         <thead className="bg-neutral-800/50 text-neutral-400 text-[11px] uppercase tracking-widest font-bold">
                             <tr>
                                 <th className="px-6 py-5">User</th>
-                                <th className="hidden md:table-cell px-6 py-5">
-                                    UUID
-                                </th>
-                                <th className="hidden md:table-cell px-6 py-5">
-                                    Status
-                                </th>
-                                <th className="hidden lg:table-cell px-6 py-5">
-                                    Joined
-                                </th>
-                                <th className="px-6 py-5 text-right">
-                                    Settings
-                                </th>
+                                <th className="hidden md:table-cell px-6 py-5">UUID</th>
+                                <th className="hidden md:table-cell px-6 py-5">Status</th>
+                                <th className="hidden lg:table-cell px-6 py-5">Joined</th>
+                                <th className="px-6 py-5 text-right">Settings</th>
                             </tr>
                         </thead>
-
                         <tbody className="divide-y divide-neutral-800">
                             {loading ? (
                                 <tr>
-                                    <td
-                                        colSpan={5}
-                                        className="p-16 text-center text-neutral-500"
-                                    >
-                                        Loading members...
-                                    </td>
+                                    <td colSpan={5} className="p-16 text-center text-neutral-500">Loading members...</td>
                                 </tr>
                             ) : paginatedUsers.length === 0 ? (
                                 <tr>
