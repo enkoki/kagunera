@@ -14,6 +14,8 @@ const DashboardLayout = () => {
                 return <UsersPanel />
             case "admins":
                 return <AdminsPanel />
+            case "back":
+                window.location.href = "/"
             default:
                 return <Overview />
         }

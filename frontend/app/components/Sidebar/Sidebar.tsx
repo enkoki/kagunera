@@ -13,6 +13,8 @@ import useAuth from '@/app/hooks/useAuth';
 import Variant from '../Button/Variant';
 import PowerIcon from '@/app/assets/icons/PowerIcon';
 import useAvatar from '@/app/hooks/useAvatar';
+import DevIcon from '@/app/assets/icons/sidebar_icons/Dev';
+import CodeIcon from '@/app/assets/icons/sidebar_icons/Code';
 
 interface SidebarProps {
   setIsOpen: (open: boolean) => void,
@@ -33,18 +35,20 @@ const Sidebar = ({ setIsOpen, isOpen }: SidebarProps) => {
                 <Image src={SiteLogoD} alt="anisync-logo" className='w-10 h-10 xl:w-11 xl:h-11'/>
                 <Cross className='cursor-pointer' onclick={() => setIsOpen(false)}/>
             </div>
-            <div className={`relative flex ${isLoggedIn ? 'justify-start' : 'justify-center'} items-center p-5 shadow-2xl rounded-xl`}>
+            <div className={`relative flex ${isLoggedIn ? 'justify-between' : 'justify-center'} items-center p-5 shadow-2xl rounded-xl`}>
                 {!isLoggedIn && (<div className="absolute inset-0 z-50 flex justify-center items-center"><Variant content="Log In" /></div>)}
-                <div className={`flex justify-start items-center gap-5 ${!isLoggedIn ? 'blur-lg pointer-events-none select-none' : ''}`}>
-                <Image src={avatar} width="80" height="80"  alt="profile picture" className='w-15 h-15 sm:w-25 sm:h-25 rounded-full shadow-2xl' />
-                <div className='flex justify-center items-start flex-col'>
-                    <div className='font-black text-[20px]'>{username}</div>
-                    <div className='text-[#9F9FA3] font-bold text-[12px]'>UUID: {uuid}</div>
-                    <div className='cursor-pointer text-[#6200ED] font-bold flex flex-col justify-center items-center w-max h-max gap-2'>
-                        <Link href="/profile">View Profile</Link>
+                <div className={`flex justify-between items-center gap-5 ${!isLoggedIn ? 'blur-lg pointer-events-none select-none' : ''} w-full`}>
+                    <div className='flex gap-5 w-full'>
+                    <Image src={avatar} width="80" height="80"  alt="profile picture" className='w-15 h-15 sm:w-25 sm:h-25 rounded-full shadow-2xl' />
+                    <div className='flex justify-center items-start flex-col'>
+                        <div className='font-black text-[20px]'>{username}</div>
+                        <div className='text-[#9F9FA3] font-bold text-[12px]'>UUID: {uuid}</div>
+                        <div className='cursor-pointer text-[#6200ED] font-bold flex flex-col justify-center items-center w-max h-max gap-2'>
+                            <Link href="/profile">View Profile</Link>
+                        </div>
+                    </div >
                     </div>
-                </div >
-                {role_id <= 1 ? <Link href="/dashboard" className='border-3 border-gray-400 px-3 py-2 rounded-2xl'>Admin</Link> : null}
+                    {role_id <= 1 ? <Link href="/dashboard" ><CodeIcon width={24} height={24}/></Link> : null}
                 </div>
             </div>
             <SBItems />
