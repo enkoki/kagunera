@@ -2,9 +2,10 @@ interface UserHeaderProps {
     searchTerm: string;
     setSearchTerm: (value: string) => void;
     count: number;
+    setCurrentPage: (value: number) => void;
 }
 
-const UserHeader: React.FC<UserHeaderProps> = ({ searchTerm, setSearchTerm, count }) => {
+const UserHeader: React.FC<UserHeaderProps> = ({ searchTerm, setSearchTerm, count, setCurrentPage}) => {
     return (
         <header className="mb-8 flex flex-col xl:flex-row xl:items-center justify-between gap-6">
             <div>
@@ -18,7 +19,7 @@ const UserHeader: React.FC<UserHeaderProps> = ({ searchTerm, setSearchTerm, coun
                         type="text" 
                         placeholder="Search users..." 
                         value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
+                        onChange={(e) => {setSearchTerm(e.target.value); setCurrentPage(1);}}
                         className="w-full bg-neutral-900 border border-neutral-800 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-purple-500 transition-all text-white"
                     />
                 </div>

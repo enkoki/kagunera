@@ -5,6 +5,7 @@ import Dropdown from './Dropdown'
 import useAvatar from '@/app/hooks/useAvatar'
 import useAuth from '@/app/hooks/useAuth'
 import Link from 'next/link'
+import CodeIcon from '@/app/assets/icons/sidebar_icons/Code'
 
 const LoggedIn = () => {
   const { avatar } = useAvatar()
@@ -15,7 +16,7 @@ const LoggedIn = () => {
         <p className='font-bold text-[18px]'>{username}</p>
         <Image width="40" height="40" src={avatar} alt="user profile picture" className='rounded-full w-10 h-10'></Image>
         <Dropdown />
-        {role_id <= 1 ? <Link href="/dashboard"><div className='cursor-pointer hover:bg-gray-400 transition-all duration-200 active:opacity-80 font-bold border-gray-400 border-4 px-5 py-2 rounded-2xl'>Open Panel </div> </Link> : null}
+        {role_id <= 1 ? <Link href="/dashboard"><CodeIcon width={24} height={24}/> </Link> : null}
     </div>
   )
 }
