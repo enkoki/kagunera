@@ -13,10 +13,12 @@ const ProfileHeader = ({
 	role_id,
 }: ProfileHeaderProps) => {
 	const { avatar } = useAvatar();
-	console.log(role_id)
+	console.log(role_id);
 	return (
 		<div className="flex items-end gap-5 mb-6 relative z-10">
-			<div className={`relative w-[112px] h-[112px] shrink-0 rounded-xl overflow-hidden ${role_id <= 1 ? "border-amber-500 border-3 shadow-amber-500/30} shadow-2xl" : "shadow-2xl" }`}>
+			<div
+				className={`relative w-[112px] h-[112px] shrink-0 rounded-xl overflow-hidden ${role_id <= 1 ? "border-amber-500 border-3 shadow-amber-500/30} shadow-2xl" : "shadow-2xl"}`}
+			>
 				<Image
 					src={avatar || "/default-avatar.png"}
 					fill
