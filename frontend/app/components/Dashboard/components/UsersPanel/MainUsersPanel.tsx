@@ -27,7 +27,7 @@ const MainUsersPanel: React.FC = () => {
             setLoading(true)
 
             const token = localStorage
-                .getItem("anisync_token")
+                .getItem("kagunera_token")
                 ?.replace(/^"|"$/g, "")
 
             if (!token) {

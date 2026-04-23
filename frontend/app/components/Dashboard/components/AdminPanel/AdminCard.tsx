@@ -20,7 +20,7 @@ const AdminCard = ({ admin, onRefresh }: { admin: any, onRefresh: () => void }) 
     const isSuperAdmin = admin.roleId === 0
 
     const handleDemote = async () => {
-        const token = window.localStorage.getItem("anisync_token")
+        const token = window.localStorage.getItem("kagunera_token")
         if (!token) return
 
         setLoading(true)

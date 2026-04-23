@@ -15,20 +15,18 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Anisync - Start Tracking Anime Today",
+  title: "Kagunera · Start Exploring Anime From Today",
   description: "Track your favorite anime, discover upcoming releases, and manage your watchlist effortlessly in one organized platform. Stay updated with the latest episodes, release schedules, and trending series so you never miss a moment of the anime you love.",
-  authors: [{ name: "EMA", url: "https://github.com/enkoki/Anisync" }],
+  authors: [{ name: "EMA", url: "https://github.com/enkoki/kagunera" }],
   openGraph: {
-    title: "Anisync - Start Tracking Anime Today",
-    description: "Track your favorite anime, see upcoming releases, and manage your watchlist effortlessly.",
-    url: "https://anisynced.netlify.app/",
-    siteName: "Anisync",
+    title: "Kagunera · Start Exploring Anime From Today",
+    description: "Explore your favorite anime, discover upcoming releases effortlessly in one organized platform. Stay updated with the latest episodes, release schedules, and trending series so you never miss a moment of the anime you love..",
+    url: "https://kagunera.vercel.app/",
+    siteName: "Kagunera",
     images: [
       {
-        url: "https://anisynced.netlify.app/og-logo.ico",
-        width: 128,
-        height: 128,
-        alt: "Anisync App Preview",
+        url: "https://i.imgur.com/jAvIeGK.png",
+        alt: "Kagunera App Preview",
       },
     ],
     locale: "en_US",
@@ -36,9 +34,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Anisync - Start Tracking Anime Today",
-    description: "Track your favorite anime, discover upcoming releases, and manage your watchlist effortlessly in one organized platform. Stay updated with the latest episodes, release schedules, and trending series so you never miss a moment of the anime you love.",
-    images: ["https://anisynced.netlify.app/og-logo.ico"],
+    title: "Kagunera · Start Exploring Anime From Today",
+    description: "Explore your favorite anime, discover upcoming releases effortlessly in one organized platform. Stay updated with the latest episodes, release schedules, and trending series so you never miss a moment of the anime you love.",
+    images: ["https://i.imgur.com/jAvIeGK.png"],
   },
 };
 export default function RootLayout({

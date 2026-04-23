@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect }  from 'react'
-import Navbar from '../components/Navbar/Navbar'
+import Navbar from '../components/Navbar/NavbarContent'
 import { useRouter } from 'next/navigation'
 import useAuth from '../hooks/useAuth'
 import useAvatar from '../hooks/useAvatar'

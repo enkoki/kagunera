@@ -1,5 +1,13 @@
-![](https://i.imgur.com/jAvIeGK.png)
-A simple Next.js project for learning Next.js and practicing team collaboration.
+![Kagunera](https://i.imgur.com/jAvIeGK.png)
+<div align=center>
+
+![Kagunera](https://img.shields.io/badge/app-Kagunera-8A2BE2)
+![NextJS](https://img.shields.io/badge/Frontend-NextJS-black)
+![FastAPI](https://img.shields.io/badge/Backend-FastAPI-darkgreen)
+
+</div>
+A full stack application made with NextJS frontend and FastAPI backend.
+
 ## Getting Started
 ### Frontend Part
 
