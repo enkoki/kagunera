@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState, Suspense } from 'react';
-import Navbar from '../components/Navbar/NavbarContent';
-import Search from '../components/Search/Search';
+import Navbar from '../components/Navbar/Navbar';
 import { useSearchParams } from 'next/navigation';
 import { Anime, fetchSearchAnime, fetchAllTimePopularAnime } from '../lib/fetchAnimes';
 import AnimeGrid from '../components/Cards/HomeGrid';
