@@ -10,3 +10,9 @@ def get_users(current_user: dict, db: Session):
     if not users:
         raise HTTPException(status_code=404, detail="No users found")
     return users
+
+def user_username(username: str, db: Session):
+    user =  db.query(Users).filter(Users.username == username).first()
+    if not user:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"User with username '{username}' not found")
+    return user

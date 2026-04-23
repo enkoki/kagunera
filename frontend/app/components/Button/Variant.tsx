@@ -6,7 +6,7 @@ interface VariantProps {
   route?:boolean
 }
 
-const style = "flex justify-center items-center font-bold text-xl bg-[#6200ED] py-2 px-6 transition-opacity duration-300 hover:opacity-85 active:opacity-75"
+const style = "flex justify-center items-center text-[#6e7281] font-medium text-[14px] py-2 px-4 transition-opacity duration-300 hover:opacity-85 active:opacity-75"
 
 const Variant = ( {content="Variant", route=true} : VariantProps) => {
   return route ? (

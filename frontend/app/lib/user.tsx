@@ -61,3 +61,28 @@ export async function fetchUsers(token: string) {
     return { success: false, message: "Network error" };
   }
 }
+
+export async function getUserByUsername(username: string) {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/user/${username}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      return { 
+        success: false, 
+        status: res.status, 
+        message: data.detail || "User not found" 
+      };
+    }
+
+    return { success: true, data };
+  } catch (err) {
+    return { success: false, message: "Network error occurred" };
+  }
+}

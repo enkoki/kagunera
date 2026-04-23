@@ -7,7 +7,7 @@ from schemas.user_schemas import UserCreate, UserLogin, UserOut, AllUserOut
 from services.auth import register_user, login_user, get_current_user
 from services.roles_logic import create_initial_roles
 from services.create_superadmin import create_super_admin
-from services.users import get_users
+from services.users import get_users, user_username
 
 public_router = APIRouter(prefix = "/auth", tags=["Authentication"])
 router = APIRouter(tags=["Users"], dependencies=[Depends(get_current_user)])
@@ -35,3 +35,7 @@ def get_user(current_user: UserOut = Depends(get_current_user)):
 @router.get("/users", response_model=List[AllUserOut])
 def get_all_users(current_user = Depends(get_current_user), db: Session = Depends(get_db)):
     return get_users(current_user, db)
+
+@public_router.get("/user/{username}", response_model=UserOut)
+def get_user_by_username(username: str, db: Session = Depends(get_db)):
+    return user_username(username, db)
