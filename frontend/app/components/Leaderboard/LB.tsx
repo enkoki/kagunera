@@ -18,7 +18,7 @@ const LB = () => {
 
         const timer = setTimeout(() => {
             loadAllTimePopular();
-        }, 1000);
+        }, 3000);
         return () => clearTimeout(timer);
     }, []);
 
