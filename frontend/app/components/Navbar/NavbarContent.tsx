@@ -66,7 +66,7 @@ const NavbarContent = ({ isloggedin = false }) => {
                             <li className={pathname === "/about" ? "text-[#4a2a8a]" : ""}>
                                 <Link href="/bookmarks">Bookmarks</Link>
                             </li>
-                            <li className={pathname === "/profile" ? "text-[#4a2a8a]" : ""}>
+                            <li className={pathname === "/search" ? "text-[#4a2a8a]" : ""}>
                                 <Link href="/search">Browse</Link>
                             </li>
                         </ul>

@@ -5,11 +5,11 @@ import { useSearchParams } from 'next/navigation';
 import { Anime, fetchSearchAnime, fetchAllTimePopularAnime } from '../lib/fetchAnimes';
 import AnimeGrid from '../components/Cards/HomeGrid';
 import Spinner from '../assets/icons/Spinner';
+import useAuth from '../hooks/useAuth';
 
 const SearchResults = () => {
     const searchParams = useSearchParams();
     const query = searchParams.get("q");
-
     const [anime, setAnime] = useState<Anime[]>([]);
     const [loading, setLoading] = useState(false);
     const [pageNum, setPageNum] = useState(1);
@@ -73,9 +73,10 @@ const SearchResults = () => {
 };
 
 const SearchPage = () => {
+    const {isLoggedIn} = useAuth()
     return (
         <>
-            <Navbar />
+            <Navbar isloggedin={isLoggedIn}/>
             <div className='h-[60px] md:h-[80px]'></div>            
             <Suspense fallback={<div className="flex justify-center p-10"><Spinner /></div>}>
                 <SearchResults />
