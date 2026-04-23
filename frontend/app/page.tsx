@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <>
       <Navbar isloggedin={isLoggedIn} />
-      <div className="relative w-screen h-screen bg-black">
+      <div className="relative w-screen h-screen bg-black pt-[70px] md:pt-[75px]">
         <HomeBody >
           <Picture />
           <div className="z-20 flex flex-col justify-center items-center lg:items-start gap-5">
