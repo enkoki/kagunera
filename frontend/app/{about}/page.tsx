@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import Navbar from "../components/Navbar/Navbar";
+import Navbar from "../components/Navbar/NavbarContent";
 import Banner from "../components/Banner/Banner";
 import AboutFeatures from "../components/AboutFeatures/AboutFeatures";
 import AboutFooter from "../components/AboutFooter/AboutFooter";
