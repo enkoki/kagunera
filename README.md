@@ -1,4 +1,4 @@
-## Anisync
+![](https://i.imgur.com/jAvIeGK.png)
 A simple Next.js project for learning Next.js and practicing team collaboration.
 ## Getting Started
 ### Frontend Part
