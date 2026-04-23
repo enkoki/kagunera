@@ -6,7 +6,7 @@ const Dropdown = () => {
 	const {isLoggedIn, setIsLoggedIn} = useAuth()
 
 	const handleLogout = () => {
-		localStorage.removeItem("anisync_token")
+		localStorage.removeItem("kagunera_token")
 		setIsLoggedIn(false)
 		window.location.href = "/"
 	}

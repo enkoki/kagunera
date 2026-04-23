@@ -20,7 +20,7 @@ const PromoteModel = ({ isOpen, onClose, onSuccess }: PromoteModelProps) => {
         setError(null)
         setLoading(true)
 
-        const token = window.localStorage.getItem("anisync_token")
+        const token = window.localStorage.getItem("kagunera_token")
         if (!token) {
             setError("Session expired.")
             setLoading(false)

@@ -8,15 +8,42 @@ import ProfileOverview from "@/components/Profile/ProfileOverview";
 import ProfileComments from "@/components/Profile/ProfileComments";
 import ProfileHead from "@/app/components/Profile/ProfileHead";
 import { useRouter } from "next/navigation";
+import { getUserByUsername } from "../lib/user";
 
 const Profile = () => {
 	const router = useRouter();
-	const [activeTab, setActiveTab] = useState<'Overview' | 'Comments'>('Overview');
+	const [activeTab, setActiveTab] = useState<"Overview" | "Comments">(
+		"Overview",
+	);
 	const { isLoggedIn, authLoading, username } = useAuth();
+	const [isValidating, setIsValidating] = useState(false)
+	const [userExists, setUserExists] = useState<boolean>()
+	const [user, setUser] = useState()
 
 	useEffect(() => {
 		if (!isLoggedIn && !authLoading) router.replace("/login");
 	}, [router, isLoggedIn, authLoading]);
+
+	useEffect(() => {
+		const checkUser = async () => {
+			if (!username) return;
+
+			setIsValidating(true);
+
+			const result = await getUserByUsername(username);
+
+			if (!result.success) {
+				setUserExists(false);
+			} else {
+				setUser(result.user);
+				setUserExists(true);
+			}
+
+			setIsValidating(false);
+		};
+
+		checkUser();
+	}, [username]);
 
 	if (authLoading)
 		return (
@@ -34,7 +61,7 @@ const Profile = () => {
 
 				<div className="max-w-[1280px] mx-auto px-4 pb-20 mt-[25px]">
 					<ProfileBanner />
-					<ProfileHead username={username} />
+					<ProfileHead username={username} userData={user}/>
 					<ProfileTabs activeTab={activeTab} setActiveTab={setActiveTab} />
 					{activeTab === "Overview" && <ProfileOverview />}
 					{activeTab === "Comments" && <ProfileComments />}

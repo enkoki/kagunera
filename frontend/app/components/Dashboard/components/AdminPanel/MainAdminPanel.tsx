@@ -13,7 +13,7 @@ const MainAdminPanel = () => {
     const [isModalOpen, setIsModalOpen] = useState(false)
 
     const fetchStaff = async () => {
-        const token = window.localStorage.getItem("anisync_token")
+        const token = window.localStorage.getItem("kagunera_token")
 
         if (authLoading) return
         

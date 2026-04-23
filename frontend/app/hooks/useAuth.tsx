@@ -35,7 +35,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 	const [role_id, setRoleID] = useState<number>(2)
 
 useEffect(() => {
-  const token = window.localStorage.getItem("anisync_token")
+  const token = window.localStorage.getItem("kagunera_token")
 
   if (!token) {
     setAuthLoading(false)
@@ -49,7 +49,7 @@ useEffect(() => {
 				setUUID(res.data.uuid)
 				setRoleID(res.data.role_id)
 			} else {
-				localStorage.removeItem("anisync_token")
+				localStorage.removeItem("kagunera_token")
 				setIsLoggedIn(false)
 				setUsername("")
 			}

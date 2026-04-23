@@ -32,7 +32,7 @@ export default function LoginContainer() {
             }
 
             // Save JWT token
-            window.localStorage.setItem("anisync_token", result.data.access_token)
+            window.localStorage.setItem("kagunera_token", result.data.access_token)
             const session = await verify_session(result.data.access_token)
             if (!session.success) {
                 setError("Login failed: could not fetch session")
